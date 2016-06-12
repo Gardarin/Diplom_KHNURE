@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="">
+    @if (ViewBag.Researcher!= null)
+    { 
+        
+   <p>@ViewBag.Researcher.Name</p>
+    <p>@ViewBag.Researcher.Status</p>
+    <p class="lead"><a href="/Home/CreateResearch" class="btn btn-success btn-lg">AddResearch</a></p>
+        if (ViewBag.Researcher.Researches != null)
+        {
+            <table class="table table-striped table-hover ">
+                <tr class="info">
+                    <td><p class="lead">Название</p></td>
+                    <td><p class="lead">Description</p></td>
+                    <td><p class="lead">Status</p></td>
+                    <td><p class="lead">Algoritm</p></td>
+                    <td><p class="lead">View Research</p></td>
+                    <td><p class="lead">Result</p></td>
+                    <td><p class="lead">Del</p></td>
+                </tr>
+                @foreach (var res in ViewBag.Researcher.Researches)
+                {
+                    <tr class="active">
+                        <td><p>@res.Name</p></td>
+                        <td><p>@res.Description</p></td>
+                        <td><p>@res.State</p></td>
+                        @if (res.CurentAlgorithm != null)
+                        {
+                            <td><p>@res.CurentAlgorithm.Name</p></td>
+                        }
+                        else
+                        {
+                            <td><p>None</p></td>
+                        }
+                        <td><p><a href="/Home/TheResearch/@res.Id" class="btn btn-success">View research</a></p></td>
+                        <td><p><a href="/Home/Result/@res.Id" class="btn btn-info">View Result</a></p></td>
+                        <td><p><a href="/Home/DeleteResearch/@res.Id" class="btn btn-danger">Delete</a></p></td>
+                    </tr>
+                }
+            </table>
+        }
+    }
+    else
+    {
+        <p>You are not authentification</p>
+    }
+</div>

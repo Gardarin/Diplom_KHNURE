@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "SetAlgorithm";
+}
+
+<div class="">
+    @if (ViewBag.CurentAlgorithm == null)
+    {
+        <p>Curent algorithm none</p>
+    }
+    else
+    {
+        <div>
+            <p>@ViewBag.CurentAlgorithm.Id</p>
+            <p>@ViewBag.CurentAlgorithm.Name</p>
+            <p>@ViewBag.CurentAlgorithm.Description</p>
+        </div>
+    }
+    <div class="">
+        @if (ViewBag.Algorithms != null)
+        {
+        <table class="table table-striped table-hover ">
+            <tr class="info">
+                <td><p>ID</p></td>
+                <td><p>Название</p></td>
+                <td><p>Description</p></td>
+                <td><p>Set</p></td>
+            </tr>
+            @foreach (var alg in ViewBag.Algorithms)
+            {
+                <tr class="active">
+                    <td><p>@alg.Id</p></td>
+                    <td><p>@alg.Name</p></td>
+                    <td><p>@alg.Description</p></td>
+                    <td><p><a href="/Home/SetlectAlgorithm/?id=@alg.Id&researchId=@ViewBag.ResearchId" class="btn btn-success">Set</a></p></td>
+
+                </tr>
+            }
+        </table>
+        }
+    </div>    
+    <p><a href="/Home/TheResearch/@ViewBag.ResearchId" class="btn btn-success">Comback to research</a>
+</div>

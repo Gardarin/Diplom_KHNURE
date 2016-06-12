@@ -1,0 +1,11 @@
+﻿@model Diplom.Models.AllResults.AprioriResult
+@if (Model != null)
+{
+    <p>Apriori rules </p> 
+        <ul>
+            @foreach (var r in Model.ReturnData())
+            {
+                <li>@r</li>
+            }
+        </ul>
+}

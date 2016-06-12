@@ -1,0 +1,63 @@
+﻿@model Diplom.Models.Research.Research
+
+@{
+    ViewBag.Title = "TheResearch";
+}
+
+<h2>TheResearch</h2>
+<div>
+    @if (Model != null)
+    {
+        bool CanStart = true;
+        <p><h4>@Model.Name</h4></p>
+        <p><h4>@Model.Description</h4></p>
+        <p><h4>@Model.State</h4></p>
+        <p><h4>CurentAlgoritm</h4></p>
+    <div>
+        @if (Model.CurentAlgorithm != null)
+        {
+        <p><h5>@Model.CurentAlgorithm.Name</h5></p>
+        <p><h5>@Model.CurentAlgorithm.Description</h5></p>
+        }
+        else
+        {
+            CanStart=false;
+        <p><h5>None</h5></p>
+        }
+        <p><a href="/Home/SetAlgorithm/@Model.Id" class="btn btn-success">SetAlgorithm</a></p>
+    </div>
+    <p><h4>InputData</h4></p>
+    <div>
+        @if (Model.InputData != null)
+        {
+        <p><h5>@Model.InputData.Id</h5></p>
+        <p><h5>@Model.InputData.ToString()</h5></p>
+        }
+        else
+        {
+            //CanStart = false;
+        <p><h5>None</h5></p>
+        }
+        <p><a href="/Home/SetAlgorithm/@Model.Id" class="btn btn-success">SetAlgorithm</a></p>
+    </div>
+    <p><h4>Result</h4></p>
+    <div>
+        @if (Model.CurentResult != null)
+        {
+            <p><h5>@Model.CurentResult.Id</h5></p>
+            <p><h5>@Model.CurentResult.ToString()</h5></p>
+        }
+        else
+        {
+            <p><h5>None</h5></p>
+        }
+    </div>
+        if (CanStart)
+        {
+            <div>
+                <p><a href="/Home/StartResearch/@Model.Id" class="btn btn-success">Start research</a></p>
+            </div>
+        }
+    }
+</div>
+
