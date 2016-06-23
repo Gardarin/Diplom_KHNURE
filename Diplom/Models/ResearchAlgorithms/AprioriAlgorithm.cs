@@ -12,33 +12,35 @@ namespace Diplom.Models.ResearchAlgorithms
     {
         public override Research.Result Perform(Research.InputData inputData)
         {
-            //Console.WriteLine("\nBegin high-confidence association rule demo\n");
-
-            //throw new NotImplementedException();
-            List<int[]> transactions = new List<int[]>();
-            transactions.Add(new int[] { 0, 3, 4, 11 });
-            transactions.Add(new int[] { 1, 4, 5 });
-            transactions.Add(new int[] { 3, 4, 6, 7 });
-            transactions.Add(new int[] { 3, 4, 6, 7 });
-            transactions.Add(new int[] { 0, 5 });
-            transactions.Add(new int[] { 3, 5, 9 });
-            transactions.Add(new int[] { 2, 3, 4, 7 });
-            transactions.Add(new int[] { 2, 5, 8 });
-            transactions.Add(new int[] { 0, 1, 2, 5, 10 });
-            transactions.Add(new int[] { 2, 3, 5, 6, 7, 9 });
-
+            
+            List<List<string>> col = (List<List<string>>)inputData.GetInputData();
+            
+           
+            List<string> items = new List<string>();
+            Transaction<int> t;
             List<Transaction<int>> transactions2 = new List<Transaction<int>>();
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 0, 3, 4, 11 } });
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 1, 4, 5 } });
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 3, 4, 6, 7 } });
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 3, 4, 6, 7 } });
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 0, 5 } });
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 3, 5, 9 } });
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 2, 3, 4, 7 } });
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 2, 5, 8 } });
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 0, 1, 2, 5, 10 } });
-            transactions2.Add(new Transaction<int>() { Elements = new List<int>() { 2, 3, 5, 6, 7, 9 } });
-
+            List<int[]> transactions = new List<int[]>();
+            foreach (var trans in col)
+            {
+                t=new Transaction<int>();
+                transactions2.Add(t);
+                t.Elements = new List<int>();
+                foreach (var item in trans)
+                {
+                    if (items.FirstOrDefault(x => x == item) == null)
+                    {
+                        t.Elements.Add(items.Count);
+                        items.Add(item);
+                    }
+                    else
+                    {
+                        t.Elements.Add(items.FindIndex(x=>x==item));
+                    }
+                }
+                transactions.Add(t.Elements.ToArray());
+            }
+            
+          
             var res = Apriori.AprioriMethod(transactions2, 3);
             List<int[]> freqItemSets2 = new List<int[]>();
             int z = 0;
@@ -55,7 +57,7 @@ namespace Diplom.Models.ResearchAlgorithms
                 }
             }
 
-            double minConPct = 0.70;
+            double minConPct = 0.10;
 
             List<Rule> goodRules = GetHighConfRules(freqItemSets2, transactions, minConPct);
 
@@ -66,15 +68,21 @@ namespace Diplom.Models.ResearchAlgorithms
             List<string> data = new List<string>();
             for (int i = 0; i < goodRules.Count; ++i)
             {
+                goodRules[i].items = items;
                 data.Add(goodRules[i].ToString());
             }
             
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(ms, data);
-            //aprioriResult.Data = new byte[(int)ms.Length];
+            
             aprioriResult.Data = ms.GetBuffer();
 
             return aprioriResult;
+        }
+
+        public override Research.InputData CreateInputData()
+        {
+            return new InputDataTypes.AprioriInputData();
         }
 
          static void ShowList(List<int[]> trans)
@@ -227,6 +235,7 @@ namespace Diplom.Models.ResearchAlgorithms
         public int[] antecedent;
         public int[] consequent;
         public double confidence;
+        public List<string> items;
 
         public Rule(int[] antecedent, int[] consequent, double confidence)
         {
@@ -241,13 +250,13 @@ namespace Diplom.Models.ResearchAlgorithms
         {
             string s = "IF ( ";
             for (int i = 0; i < antecedent.Length; ++i)
-                s += antecedent[i] + " ";
+                s += items[antecedent[i]] + " ";
             s += ")";
             s = s.PadRight(13);
 
             string t = " THEN ( ";
             for (int i = 0; i < consequent.Length; ++i)
-                t += consequent[i] + " ";
+                t += items[consequent[i]] + " ";
             t += ") ";
             t = t.PadRight(17);
 

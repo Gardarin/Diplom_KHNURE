@@ -1,0 +1,7 @@
+﻿@model Diplom.Models.Research.Research
+@using (Html.BeginForm("SetInputData", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="number" hidden="hidden" name="id" value="@Model.Id" /><br>
+    <input type="file" name="file" /><br>
+    <input type="submit" value="Загрузить" />
+}

@@ -6,14 +6,14 @@
 <div class="">
     @if (ViewBag.CurentAlgorithm == null)
     {
-        <p>Curent algorithm none</p>
+        <p>Алгоритм не задан</p>
     }
     else
     {
         <div>
-            <p>@ViewBag.CurentAlgorithm.Id</p>
-            <p>@ViewBag.CurentAlgorithm.Name</p>
-            <p>@ViewBag.CurentAlgorithm.Description</p>
+            <p>Айди @ViewBag.CurentAlgorithm.Id</p>
+            <p>Название @ViewBag.CurentAlgorithm.Name</p>
+            <p>Описание @ViewBag.CurentAlgorithm.Description</p>
         </div>
     }
     <div class="">
@@ -32,12 +32,12 @@
                     <td><p>@alg.Id</p></td>
                     <td><p>@alg.Name</p></td>
                     <td><p>@alg.Description</p></td>
-                    <td><p><a href="/Home/SetlectAlgorithm/?id=@alg.Id&researchId=@ViewBag.ResearchId" class="btn btn-success">Set</a></p></td>
+                    <td><p><a href="/Home/SetlectAlgorithm/?id=@alg.Id&researchId=@ViewBag.ResearchId" class="btn btn-success">Задать</a></p></td>
 
                 </tr>
             }
         </table>
         }
     </div>    
-    <p><a href="/Home/TheResearch/@ViewBag.ResearchId" class="btn btn-success">Comback to research</a>
+    <p><a href="/Home/TheResearch/@ViewBag.ResearchId" class="btn btn-success">Вернутся к исследованию</a>
 </div>

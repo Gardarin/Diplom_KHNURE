@@ -15,5 +15,10 @@ namespace Diplom.Models.Research
         {
             return null;
         }
+
+        public virtual InputData CreateInputData()
+        {
+            return null;
+        }
     }
 }

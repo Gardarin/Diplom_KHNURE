@@ -14,7 +14,6 @@ namespace Diplom.Models.Research
 
         public virtual List<string> ReturnData()
         {
-            //return new string[]{ this.ToString()};
             return null;
         }
     }

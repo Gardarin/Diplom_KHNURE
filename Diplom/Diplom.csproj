@@ -180,6 +180,10 @@
     <Compile Include="Migrations\201606101857105_Result.Designer.cs">
       <DependentUpon>201606101857105_Result.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606121200470_InputDataTypes.cs" />
+    <Compile Include="Migrations\201606121200470_InputDataTypes.Designer.cs">
+      <DependentUpon>201606121200470_InputDataTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AllResults\AprioriResult.cs" />
@@ -206,6 +210,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ClassDiagram1.cd" />
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -259,6 +264,7 @@
     <Content Include="Views\Home\StartResearch.cshtml" />
     <Content Include="Views\Home\TheResearch.cshtml" />
     <Content Include="Views\Home\AprioriResultPartial.cshtml" />
+    <Content Include="Views\Home\SetInputData.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606101857105_Result.resx">
       <DependentUpon>201606101857105_Result.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606121200470_InputDataTypes.resx">
+      <DependentUpon>201606121200470_InputDataTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

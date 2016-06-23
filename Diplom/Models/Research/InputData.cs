@@ -12,18 +12,16 @@ namespace Diplom.Models.Research
 
         public byte[] Input { get; set; }
 
-        public bool SetInputData(MemoryStream stream)
+        public virtual bool SetInputData(Stream stream)
         {
             if (stream == null)
             {
                 return false;
             }
-            Input = new byte[stream.Length];
-            stream.Read(Input, 0, Input.Count());
             return true;
         }
 
-        public MemoryStream GetInputData()
+        public virtual object GetInputData()
         {
             MemoryStream stream = new MemoryStream(Input);
             return stream;

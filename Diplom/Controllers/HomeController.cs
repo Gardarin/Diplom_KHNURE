@@ -43,7 +43,6 @@ namespace Diplom.Controllers
         [HttpPost]
         public ActionResult CreateResearch(Research research)
         {
-            //research.CurentAlgorithm = new Diplom.Models.ResearchAlgorithms.ClassificationsAlgoritm() { Name="Classification", Description="this algorithm..." };
             research.CurentAlgorithm = null;
             research.CurentResult = null;
             research.State = "Created";
@@ -145,7 +144,6 @@ namespace Diplom.Controllers
             }
             using (ResearchDbContext rdbc = new ResearchDbContext())
             {
-                //ViewBag.Result = rdbc.Researchs.Include("CurentResult").FirstOrDefault(x => x.Id == id).CurentResult;
                 ViewData.Add("Result", rdbc.Researchs.Include("CurentResult").FirstOrDefault(x => x.Id == id).CurentResult);
             }
             return View();
@@ -162,7 +160,10 @@ namespace Diplom.Controllers
             using (ResearchDbContext rdbc = new ResearchDbContext())
             {
                 var research= rdbc.Researchs.Include("CurentAlgorithm").Include("InputData").Include("CurentResult").FirstOrDefault(x => x.Id == id);
-                rdbc.Results.Remove(research.CurentResult);
+                if (research.CurentResult != null)
+                {
+                    rdbc.Results.Remove(research.CurentResult);
+                }
                 research.CurentResult = research.CurentAlgorithm.Perform(research.InputData);
                 rdbc.SaveChanges();
             }
@@ -185,7 +186,30 @@ namespace Diplom.Controllers
             return View(research);
         }
 
-        #region
+        [HttpPost]
+        public ActionResult SetInputData(int id, HttpPostedFileBase file = null)
+        {
+            string userId = "";
+            userId = User.Identity.GetUserId();
+            if (userId == "")
+            {
+                return RedirectToAction("Index");
+            }
+            using (ResearchDbContext rdbc = new ResearchDbContext())
+            {
+                if (file != null)
+                {
+                    InputData inputData = rdbc.Researchs.Include("CurentAlgorithm").FirstOrDefault(x => x.Id == id).CurentAlgorithm.CreateInputData();
+                    inputData.SetInputData(file.InputStream);
+                    rdbc.InputDatas.Remove(rdbc.Researchs.Include("InputData").FirstOrDefault(x => x.Id == id).InputData);
+                    rdbc.Researchs.Include("InputData").FirstOrDefault(x => x.Id == id).InputData = inputData;
+                    rdbc.SaveChanges();
+                }
+            }
+            return RedirectToAction("TheResearch/" + id); ;
+        }
+
+        #region ResultPartial
 
         public ActionResult AprioriResultPartial()
         {

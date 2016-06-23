@@ -35,10 +35,10 @@
         }
         else
         {
-            //CanStart = false;
-        <p><h5>None</h5></p>
+            CanStart = false;
+            <p><h5>None</h5></p>
         }
-        <p><a href="/Home/SetAlgorithm/@Model.Id" class="btn btn-success">SetAlgorithm</a></p>
+        @{Html.RenderPartial("SetInputData", Model);}
     </div>
     <p><h4>Result</h4></p>
     <div>

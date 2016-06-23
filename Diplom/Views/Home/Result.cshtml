@@ -3,14 +3,12 @@
     ViewBag.Title = "Result";
 }
 
-<h2>Result</h2>
+<h2>Результат</h2>
 
 @if (ViewBag.Result != null)
 {
     <div>
-        <h3>
-            @ViewData.FirstOrDefault(x => x.Key == "Result").Value;
-        </h3>
+        
         @{Html.RenderPartial("AprioriResultPartial", ViewData.FirstOrDefault(x => x.Key == "Result").Value);}
     </div> 
 }

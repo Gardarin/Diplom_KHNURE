@@ -54,15 +54,15 @@ namespace Diplom
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "923619664430222",
+               appSecret: "ac6bddba80aad98dedd79ce492953c09");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "616943808552-oi29tpn8ea6i492rqkm62ime8jvkju7b.apps.googleusercontent.com",
+                ClientSecret = "t-4M12UQewhjzqq3hR083YmW"
+            });
         }
     }
 }

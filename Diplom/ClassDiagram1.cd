@@ -1,48 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Diplom.Models.AllResults.AprioriResult">
-    <Position X="11.25" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\AllResults\AprioriResult.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Diplom.Models.Research.Algorithm">
-    <Position X="8" Y="0.5" Width="1.5" />
+    <Position X="7.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAgAgAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAgAgAAAAAAAAQAAAAAAAAAIAAAAAAAAAA=</HashCode>
       <FileName>Models\Research\Algorithm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Diplom.Models.Research.InputData">
-    <Position X="6.75" Y="8.75" Width="1.5" />
+    <Position X="6.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAgAAAAAAAAAAAEAAAAAAIAAAAAAAAAAA=</HashCode>
       <FileName>Models\Research\InputData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Diplom.Models.Research.Research">
-    <Position X="5.75" Y="3.5" Width="1.5" />
+    <Position X="5" Y="2" Width="1.5" />
     <AssociationLine Name="InputData" Type="Diplom.Models.Research.InputData" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="6.266" Y="5.18" />
-        <Point X="6.266" Y="9.062" />
-        <Point X="6.75" Y="9.062" />
+        <Point X="5.516" Y="3.68" />
+        <Point X="5.516" Y="6.812" />
+        <Point X="6.25" Y="6.812" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="CurentAlgorithm" Type="Diplom.Models.Research.Algorithm" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="7.25" Y="4.188" />
-        <Point X="7.625" Y="4.188" />
-        <Point X="7.625" Y="1.751" />
-        <Point X="8" Y="1.751" />
+        <Point X="6.5" Y="2.688" />
+        <Point X="6.875" Y="2.688" />
+        <Point X="6.875" Y="1.751" />
+        <Point X="7.25" Y="1.751" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="CurentResult" Type="Diplom.Models.Research.Result" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="6.844" Y="5.18" />
-        <Point X="6.844" Y="6.438" />
-        <Point X="8" Y="6.438" />
+        <Point X="6.094" Y="3.68" />
+        <Point X="6.094" Y="4.438" />
+        <Point X="6.75" Y="4.438" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -57,33 +50,33 @@
   </Class>
   <Class Name="Diplom.Models.Research.ResearchDbContext">
     <Position X="0.5" Y="0.5" Width="2" />
-    <AssociationLine Name="Algoritms" Type="Diplom.Models.Research.Algorithm" FixedFromPoint="true">
-      <Path>
-        <Point X="2.5" Y="0.812" />
-        <Point X="8" Y="0.812" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="InputDatas" Type="Diplom.Models.Research.InputData" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="0.75" Y="1.497" />
-        <Point X="0.75" Y="9.562" />
-        <Point X="6.75" Y="9.562" />
-      </Path>
-    </AssociationLine>
     <AssociationLine Name="Researchs" Type="Diplom.Models.Research.Research" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="2.5" Y="1.312" />
-        <Point X="6.5" Y="1.312" />
-        <Point X="6.5" Y="3.5" />
+        <Point X="5.75" Y="1.312" />
+        <Point X="5.75" Y="2" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="Algoritms" Type="Diplom.Models.Research.Algorithm" FixedFromPoint="true">
+      <Path>
+        <Point X="2.5" Y="0.812" />
+        <Point X="7.25" Y="0.812" />
       </Path>
     </AssociationLine>
     <AssociationLine Name="Results" Type="Diplom.Models.Research.Result" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="1.25" Y="1.497" />
-        <Point X="1.25" Y="7.188" />
-        <Point X="6.182" Y="7.188" Type="JumpStart" />
-        <Point X="6.349" Y="7.188" Type="JumpEnd" />
-        <Point X="8" Y="7.188" />
+        <Point X="1.25" Y="5.188" />
+        <Point X="5.433" Y="5.188" Type="JumpStart" />
+        <Point X="5.599" Y="5.188" Type="JumpEnd" />
+        <Point X="6.75" Y="5.188" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="InputDatas" Type="Diplom.Models.Research.InputData" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.75" Y="1.497" />
+        <Point X="0.75" Y="7.312" />
+        <Point X="6.25" Y="7.312" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -91,15 +84,15 @@
       <FileName>Models\Research\ResearchDbContext.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
-      <Property Name="Algoritms" />
-      <Property Name="InputDatas" />
       <Property Name="Researchers" />
       <Property Name="Researchs" />
+      <Property Name="Algoritms" />
       <Property Name="Results" />
+      <Property Name="InputDatas" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Diplom.Models.Research.Researcher">
-    <Position X="3.25" Y="3.5" Width="1.5" />
+    <Position X="2.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAEAAAAgAAEAIAAAAwAAgEAAAAYAAAAAAAAAAA=</HashCode>
       <FileName>Models\Research\Researcher.cs</FileName>
@@ -109,54 +102,10 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Diplom.Models.Research.Result">
-    <Position X="8" Y="6.25" Width="1.5" />
+    <Position X="6.75" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAACAAAAAAAAAAAAAAAAAAQAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Research\Result.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Diplom.Models.ResearchAlgorithms.AprioriAlgorithm">
-    <Position X="10.75" Y="2.75" Width="1.5" />
-    <InheritanceLine Type="Diplom.Models.Research.Algorithm" FixedFromPoint="true">
-      <Path>
-        <Point X="9.5" Y="2.25" />
-        <Point X="11.5" Y="2.25" />
-        <Point X="11.5" Y="2.75" />
-      </Path>
-    </InheritanceLine>
-    <TypeIdentifier>
-      <HashCode>AEQAAAAAAABBAgAAAAAAQCAAAAAgAAAAAAABCAAAAAA=</HashCode>
-      <FileName>Models\ResearchAlgorithms\AprioriAlgorithm.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Diplom.Models.ResearchAlgorithms.ClassificationsAlgoritm">
-    <Position X="10.75" Y="0.5" Width="2" />
-    <NestedTypes>
-      <Class Name="Diplom.Models.ResearchAlgorithms.ClassificationsAlgoritm.Methods" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Models\ResearchAlgorithms\ClassificationsAlgoritm.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-      <Class Name="Diplom.Models.ResearchAlgorithms.ClassificationsAlgoritm.NPoint" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Models\ResearchAlgorithms\ClassificationsAlgoritm.cs</NewMemberFileName>
-        </TypeIdentifier>
-        <Lollipop Position="0.2" />
-      </Class>
-      <Class Name="Diplom.Models.ResearchAlgorithms.ClassificationsAlgoritm.Node" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Models\ResearchAlgorithms\ClassificationsAlgoritm.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-      <Class Name="Diplom.Models.ResearchAlgorithms.ClassificationsAlgoritm.Trees" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Models\ResearchAlgorithms\ClassificationsAlgoritm.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Class>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\ResearchAlgorithms\ClassificationsAlgoritm.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
